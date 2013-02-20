@@ -30,7 +30,12 @@ describe LorumIpsumWordSource, "#WordSource" do
      source.should respond_to :callback
   end
   
-  it 'should return "lorum"' do
-    source.next_word!.should == "lorum" 
+  it 'should return "Lorem"' do
+    source.next_word!.should == "Lorem" 
+  end
+  
+  it 'should return "ipsum"' do
+    source.next_word!
+    source.next_word!.should == "ipsum"     
   end
 end
