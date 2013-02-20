@@ -1,0 +1,3 @@
+class LorumIpsumWordSource < WordSource
+  
+end
