@@ -38,4 +38,33 @@ describe LorumIpsumWordSource, "#WordSource" do
     source.next_word!
     source.next_word!.should == "ipsum"     
   end
+  
+  it 'should return "dolor"' do
+    source.next_word!
+    source.next_word!
+    source.next_word!.should == "dolor"
+  end
+  
+  it 'should return the top 5 words' do
+    source.source = %w{lorem ipsum ipsum}
+    source.top_5_words.should == ["ipsum", "lorem", nil, nil, nil]
+  end
+  
+  it 'should return the top 5 words from the file source' do
+    source.top_5_words.should == ["vel", "sed", "vitae", "et", "in"]    
+  end
+  
+  it 'should return the count of all the words' do
+    source.source = %w{lorem ipsum ipsum}
+    source.count.should == 3
+  end
+  
+  it 'should return the count of all the words' do
+    source.count.should == 4946
+  end
+  
+  it 'should return the top 5 consonents' do
+    source.source = %w{lorem ipsum ipsum}
+    source.top_5_consonents.should == ["m","s","p","r","l"]    
+  end
 end
