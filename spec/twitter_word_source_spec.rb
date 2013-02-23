@@ -46,4 +46,15 @@ describe TwitterWordSource do
     source_search.top_5_words.compact.size.should == 5
   end
   
+  # This spec would break if you delete the VCR cassette
+  it 'should return the top 5 consonants from a search', :vcr do
+    source_search.top_5_consonants.should == ["t", "n", "s", "r", "d"]
+  end
+  
+  # This spec would break if you delete the VCR cassette
+  it 'should return the top 5 words from a search', :vcr do
+    source_search.top_5_words.should == ["@geckoboard", "the", "I", "to", "in"]
+  end
+  
+  
 end
