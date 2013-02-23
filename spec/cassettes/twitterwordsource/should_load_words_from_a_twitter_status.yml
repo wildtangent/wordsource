@@ -1,0 +1,120 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.twitter.com/1.1/users/show.json?screen_name=wildtangent
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - application/json
+      user-agent:
+      - Twitter Ruby Gem 4.5.0
+      authorization:
+      - OAuth oauth_consumer_key="rizxIZ5tWC8TEUNElLD8Cw", oauth_nonce="f9a96cd42aa219116b79a6da89904dc0",
+        oauth_signature="7wbPg%2BdF%2FWvnTSBh64KDFQeXGfk%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1361640529", oauth_token="7256962-88V7NhDNtqADDXAbQBqiU09jmwMZwL1aDhjiP9yU",
+        oauth_version="1.0"
+      accept-encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: !binary |-
+        T0s=
+    headers:
+      !binary "eC1hY2Nlc3MtbGV2ZWw=":
+      - !binary |-
+        cmVhZA==
+      !binary "Y29udGVudC10eXBl":
+      - !binary |-
+        YXBwbGljYXRpb24vanNvbjtjaGFyc2V0PXV0Zi04
+      !binary "bGFzdC1tb2RpZmllZA==":
+      - !binary |-
+        U2F0LCAyMyBGZWIgMjAxMyAxNzoyODo1MSBHTVQ=
+      !binary "ZXhwaXJlcw==":
+      - !binary |-
+        VHVlLCAzMSBNYXIgMTk4MSAwNTowMDowMCBHTVQ=
+      !binary "cHJhZ21h":
+      - !binary |-
+        bm8tY2FjaGU=
+      !binary "Y2FjaGUtY29udHJvbA==":
+      - !binary |-
+        bm8tY2FjaGUsIG5vLXN0b3JlLCBtdXN0LXJldmFsaWRhdGUsIHByZS1jaGVj
+        az0wLCBwb3N0LWNoZWNrPTA=
+      !binary "c2V0LWNvb2tpZQ==":
+      - !binary |-
+        Z3Vlc3RfaWQ9djElM0ExMzYxNjQwNTMxNjU5MTIzOTE7IEV4cGlyZXM9TW9u
+        LCAyMy1GZWItMjAxNSAxNzoyODo1MSBHTVQ7IFBhdGg9LzsgRG9tYWluPS50
+        d2l0dGVyLmNvbQ==
+      - !binary |-
+        bGFuZz1lbg==
+      - !binary |-
+        az04MS4xMDguMTYwLjE0MS42OWUwNzIwN2Q4MGU4MTE0OyBwYXRoPS87IGV4
+        cGlyZXM9U2F0LCAwMi1NYXItMjAxMyAxNzoyODo1MSBVVEM7IGRvbWFpbj0u
+        Y29tOyBodHRwb25seQ==
+      !binary "eC10cmFuc2FjdGlvbg==":
+      - !binary |-
+        NjllMDcyMDdkODBlODExNA==
+      !binary "eC1mcmFtZS1vcHRpb25z":
+      - !binary |-
+        U0FNRU9SSUdJTg==
+      !binary "c3RhdHVz":
+      - !binary |-
+        MjAwIE9L
+      !binary "ZGF0ZQ==":
+      - !binary |-
+        U2F0LCAyMyBGZWIgMjAxMyAxNzoyODo1MSBHTVQ=
+      !binary "Y29udGVudC1lbmNvZGluZw==":
+      - !binary |-
+        Z3ppcA==
+      !binary "Y29udGVudC1sZW5ndGg=":
+      - !binary |-
+        MTA3MQ==
+      !binary "eC1yYXRlLWxpbWl0LWxpbWl0":
+      - !binary |-
+        MTgw
+      !binary "eC1yYXRlLWxpbWl0LXJlbWFpbmluZw==":
+      - !binary |-
+        MTUy
+      !binary "eC1yYXRlLWxpbWl0LXJlc2V0":
+      - !binary |-
+        MTM2MTY0MDkzMw==
+      !binary "c2VydmVy":
+      - !binary |-
+        dGZl
+      !binary "Y29ubmVjdGlvbg==":
+      - !binary |-
+        Y2xvc2U=
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAAKxW227jNhD9FVavNWJdbPoC9CEbJA+LAm0RoH1YBQItjSQm
+        FKmSVJwL8u8d6mb5sthdbP1giTOHR8OZMyO9ezzztqtwSTc0nOEiMVZ7W6+3
+        eDNPsgrQ8FkBuVFSKo02k2oAmfSuPReZZbIAadEnVMosVxIdf7PmpWRCzMjv
+        SmZomnkZ4F5e9wA0NFrgTWltvY3n8Xy/318J/gzGtiRXqaoQhMzccjDe9r3b
+        0F5w+eX9OwleaiYzyJIWLRuMyeMy46nj/OLPQvrw8fBxEt74kIcPdNVaWUgt
+        YLpyJgzMvFwJofagTZKqBs++pWs0ag4yG02rBWaEG9w2WDDLmD3mLAyX3j+Q
+        kc+NIP6ChP52ud76IfnVxx8u/RXGnrNn1WhuYSRFzsamicpzA7j0Z57lFSRv
+        SrpyjLkuQCUg2U64mK1uMORn0DznkzO4NDXmQB0FyCawmEgEjqQDuGQcRX3P
+        LLmHmoQb4vtbf7Nd0DHqwMnGySpcBuuIBiFdLuliFYQbOlHYuRN3WXhx7H/y
+        1DYaSMpQcJaUqgZiFckUeWyMxaq5lS2BmCcuhMFbbkjFJCmZIUq2rkeFm9kv
+        ZFSGRS3Ec5p+8l+XkXFHw7SmLmNx4/tRykipIf8tPtYSq2sBTkWxRzQIdEvV
+        FT7u9sENdoFm7rH8j/uOKp6zzueOpBuZsqluuEw01OI1sSrp0pu4bA2qvODs
+        UnYOwMrpr+ztXV/bedTBnRvlMtymSumMS4zaDKZasBQOfmk13zVW6RGgwe4B
+        7CAk/7hrsTClZUXbTbOxr/DOhVk5pJK9qYKMs7a1jzVEfer+gosaGpzetK9X
+        dLahA2NyMijqnbmye14VbXHnLSaeX0f0TUZ3N39d39Lb0F491oU3IUjcdtPT
+        mB/mOQnhTJEZN5jn1z7UmqeO2VrQHfcEeTzQJpRT/GQwx/NOTPH8vO/wDKWy
+        GInLnn2tXUu0Ftcj/K0roGC6AHez97YbitUtcbgF1NXdYXBLzq2Hc9JUOPF7
+        YLTogOFycQ60ZVPtemCw7IDtdQSmWtUO6XLaVD2U+h10sVifcn60M9zNSzcu
+        Dw3XS3NiqZUxfIetYEAaFOkz9K6PY3Ef5ufQuyaxmkkjGLoPdFrlXECyY+lT
+        obEB3LQXDuAF18Gn4M67iOEVK+C0gsyfyqmFYNVwolXjdRPPd8VVwfNv0F5Q
+        q+E/TW9xfXby7zjKEbQV4iaKVhH11/G8LNhTtvT125N4CdaLncpeogS/NVBL
+        2DpQeBee9O3T/U9PFFw+jfUM727C22k9Dc9gx3Syw5GJs2ys+xorf3sBhwtx
+        YFuGi3AzQbkX4Oil7W/ixWl5Vujh1Z5Bzhphkx47VujEPmw6+obh7n1/ZME3
+        xb8NfkS5BrGjD1/G+PnQfd+ZoWP+AwAA//8DAGKWhj1DCgAA
+    http_version: !binary |-
+      MS4x
+  recorded_at: Sat, 23 Feb 2013 17:28:52 GMT
+recorded_with: VCR 2.4.0
