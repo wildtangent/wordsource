@@ -8,29 +8,34 @@ end
 
 class LorumIpsumWordSource < WordSource
   
-  attr_accessor :source
+  attr_accessor :words, :found_words
   
   def initialize
-    @source = File.open(file_path, "r+") do |file|
+    @words = File.open(file_path, "r+") do |file|
       file.read.split(",")
     end
     @current = 0
+    @found_words = []
+    on_found do |word|
+      @found_words << word 
+    end
   end
 
   def next_word!
-    word = @source[@current]
+    word = @words[@current]
+    on_found(word)
     @current += 1 
     word
   end
   
   def top_5_words
-    frequency = @source.frequency
+    frequency = @words.frequency
     0.upto(4).collect{|i| frequency[i][0] rescue nil}
   end
   
   def top_5_consonents
     vowels = %w{a e i o u}
-    letters = @source.join("").split("").delete_if{|l| vowels.include?(l)} 
+    letters = @words.join("").split("").delete_if{|l| vowels.include?(l)} 
     frequency = letters.frequency
     #return frequency
     0.upto(4).collect{|i| frequency[i][0] rescue nil}
@@ -38,7 +43,21 @@ class LorumIpsumWordSource < WordSource
   
   # Count the number of words in the source file
   def count
-    @source.count
+    @words.count
+  end
+  
+  def on_found(*args, &block)
+    if block
+      @on_found = block
+    elsif @on_found
+      @on_found.call(*args)
+    end
+  end
+  
+  def callback(word)
+    puts word
+    found_words << word if word == "semper"
+    yield word == "semper" ? true : false 
   end
 
   private

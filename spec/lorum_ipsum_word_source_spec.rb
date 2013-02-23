@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe LorumIpsumWordSource, "#WordSource" do
+describe LorumIpsumWordSource do
 
   let :source do
     LorumIpsumWordSource.new
@@ -46,7 +46,7 @@ describe LorumIpsumWordSource, "#WordSource" do
   end
   
   it 'should return the top 5 words' do
-    source.source = %w{lorem ipsum ipsum}
+    source.words = %w{lorem ipsum ipsum}
     source.top_5_words.should == ["ipsum", "lorem", nil, nil, nil]
   end
   
@@ -55,7 +55,7 @@ describe LorumIpsumWordSource, "#WordSource" do
   end
   
   it 'should return the count of all the words' do
-    source.source = %w{lorem ipsum ipsum}
+    source.words = %w{lorem ipsum ipsum}
     source.count.should == 3
   end
   
@@ -64,7 +64,15 @@ describe LorumIpsumWordSource, "#WordSource" do
   end
   
   it 'should return the top 5 consonents' do
-    source.source = %w{lorem ipsum ipsum}
+    source.words = %w{lorem ipsum ipsum}
     source.top_5_consonents.should == ["m","s","p","r","l"]    
+  end
+  
+  it 'should fire a callback when the word "semper" is seen' do
+    0.upto(10) do
+      source.next_word!
+
+    end
+      source.found_words.should include("semper")
   end
 end
