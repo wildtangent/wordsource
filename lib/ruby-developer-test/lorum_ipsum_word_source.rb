@@ -15,15 +15,13 @@ class LorumIpsumWordSource < WordSource
       file.read.split(",")
     end
     @current = 0
+    @callbacks = []
     @found_words = []
-    on_found do |word|
-      @found_words << word 
-    end
   end
 
   def next_word!
     word = @words[@current]
-    on_found(word)
+    callback(word)
     @current += 1 
     word
   end
@@ -46,18 +44,24 @@ class LorumIpsumWordSource < WordSource
     @words.count
   end
   
-  def on_found(*args, &block)
+  # Basic callback pattern
+  def callback(*args, &block)
     if block
-      @on_found = block
-    elsif @on_found
-      @on_found.call(*args)
+      @callbacks << block
+    elsif @callbacks
+      @callbacks.each do |callback|
+        callback.call(*args)
+      end
     end
   end
   
-  def callback(word)
-    puts word
-    found_words << word if word == "semper"
-    yield word == "semper" ? true : false 
+  # Wrapper for callback for on_found event
+  def on_found(word)
+    callback(word) do |current_word|
+      if word == current_word
+        @found_words << current_word
+      end
+    end
   end
 
   private

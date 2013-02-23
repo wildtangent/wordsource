@@ -69,10 +69,31 @@ describe LorumIpsumWordSource do
   end
   
   it 'should fire a callback when the word "semper" is seen' do
-    0.upto(10) do
+    source.on_found("semper")
+    source.words.each do
       source.next_word!
-
     end
-      source.found_words.should include("semper")
+    source.found_words.should include("semper")
   end
+  
+  it 'should fire a callback when the word "semper" and "Lorem" is seen' do
+    source.on_found("semper")
+    source.on_found("Lorem")
+    source.words.each do
+      source.next_word!
+    end
+    source.found_words.should include("semper")
+    source.found_words.should include("Lorem")
+  end
+  
+  it 'should not add the word ipsum to the found_words list' do
+    source.on_found("semper")
+    source.on_found("Lorem")
+    source.words.each do
+      source.next_word!
+    end
+    source.found_words.should_not include("ipsum")
+  end
+
+
 end
