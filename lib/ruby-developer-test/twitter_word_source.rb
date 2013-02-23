@@ -2,17 +2,33 @@ require 'ruby-developer-test/twitter_client'
 
 class TwitterWordSource < WordSource  
 
-  attr_accessor :user
+  attr_accessor :user, :term
   
-  # Initialize the class with a file and attribute for saving found words
   def initialize
     super
+    @strategy = :user
+  end
+  
+  # Initialize the class with a file and attribute for saving found words
+  def strategy=(strategy)
+    @strategy = :search
+    case strategy
+    when :user, :search
+      @strategy = strategy
+    end
   end
   
   # Set the Twitter user to find
   def user=(user)
     @user = user
     @twitter_user = nil
+    load_words
+  end
+  
+  # Set the Twitter user to find
+  def term=(term)
+    @term = term
+    @twitter_search = nil
     load_words
   end
   
@@ -25,7 +41,12 @@ class TwitterWordSource < WordSource
   
   # Get the words from the file 
   def load_words
-    @words = twitter_user.status.text.split(/\s/)  
+    case @strategy
+    when :user
+      @words = twitter_user.status.text.split(/\s/)  
+    when :search
+      @words = twitter_search(@term).statuses.map(&:text).join(" ").split(/\s/)
+    end
   end
   
   # Return a specified user from Twitter

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe LorumIpsumWordSource do
+describe TwitterWordSource do
 
   let :source do
     TwitterWordSource.new
@@ -8,6 +8,12 @@ describe LorumIpsumWordSource do
   
   let :source_wildtangent do
     source.user = "wildtangent"
+    source
+  end
+  
+  let :source_search do
+    source.strategy = :search
+    source.term = "geckoboard"
     source
   end
   
@@ -33,7 +39,15 @@ describe LorumIpsumWordSource do
   end
   
   it 'should get words from a Twitter search' do
-    source.twitter_search("geckoboard").should
+    source.twitter_search("geckoboard").statuses.should_not be_empty
+  end
+  
+  it 'should get words from a Twitter search' do
+    source.twitter_search("geckoboard").statuses.should_not be_empty
+  end
+  
+  it 'should return the top 5 words from a search' do
+    source_search.top_5_words.compact.size.should == 5
   end
   
 end
