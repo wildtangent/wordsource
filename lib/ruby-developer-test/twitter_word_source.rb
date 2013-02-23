@@ -9,12 +9,17 @@ class TwitterWordSource < WordSource
     super
   end
   
+  # Set the Twitter user to find
   def user=(user)
     @user = user
     @twitter_user = nil
     load_words
   end
   
+  # Return a search result from Twitter
+  def twitter_search(term)
+    TwitterClient.new.search(term)
+  end
   
   private
   
@@ -25,10 +30,9 @@ class TwitterWordSource < WordSource
   
   # Return a specified user from Twitter
   def twitter_user
-    @twitter_user ||= TwitterClient.new.fetch(@user)
+    @twitter_user ||= TwitterClient.new.user(@user)
   end
   
-  # Return a search result from Twitter
-  
+
   
 end

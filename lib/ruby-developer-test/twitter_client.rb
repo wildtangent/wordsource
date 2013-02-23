@@ -13,12 +13,24 @@ class TwitterClient
     )
   end
   
-  def fetch(user)
+  # Perform a search
+  def search(term)
+    fetch.search(term)
+  end
+  
+  # Fetch a specified user
+  def user(user)
     raise Exception, "No user specified" if user.nil?
+
+    fetch.user(user)
+  end
+  
+  # Just initialize the client
+  def fetch
     num_attempts = 0
     begin
       num_attempts += 1
-      return client.user(user)
+      return client
     rescue Twitter::Error::TooManyRequests => error
       if num_attempts <= @@max_attempts
         # NOTE: Your process could go to sleep for up to 15 minutes but if you

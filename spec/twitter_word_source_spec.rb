@@ -32,4 +32,8 @@ describe LorumIpsumWordSource do
     source_wildtangent.top_5_words.should == ["to", "the", "skills", "has", "man"]
   end
   
+  it 'should get words from a Twitter search' do
+    source.twitter_search("geckoboard").should
+  end
+  
 end
