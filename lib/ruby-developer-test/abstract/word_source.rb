@@ -6,6 +6,7 @@ class WordSource
     @current = 0
     @callbacks = []
     @vowels = %w{a e i o u}
+    @consonants = %w{b c d f g h j k l m n p q r s t v w x y z}
   end
   
   # Step through all words
@@ -23,7 +24,7 @@ class WordSource
 
   # Return the top 5 consonents
   def top_5_consonants
-    consonants.top(5)
+    consonants_in_words.top(5)
   end
   
   # Return the top 5 words
@@ -47,8 +48,10 @@ class WordSource
     end
   end
 
-  def consonants
-    words.join("").split("").delete_if{|letter| @vowels.include?(letter)} 
+  def consonants_in_words
+    words.join("").split("").select do |letter| 
+      @consonants.include?(letter)
+    end 
   end
   
 end

@@ -1,5 +1,6 @@
 class LorumIpsumWordSource < WordSource
   
+  # Accessor returing all words which were found during the :on_found callback
   attr_accessor :found_words
   
   # Initialize the class with a file and attribute for saving found words
@@ -27,10 +28,12 @@ class LorumIpsumWordSource < WordSource
   
   private
 
+  # Expand file path from current path
   def file_path
     @file_path ||= File.expand_path("./", file_name)    
   end
   
+  # Default filename
   def file_name
     @file_name ||= "lorem_ipsum.txt"
   end
