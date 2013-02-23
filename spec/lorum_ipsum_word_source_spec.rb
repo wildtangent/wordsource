@@ -63,9 +63,9 @@ describe LorumIpsumWordSource do
     source.count.should == 4946
   end
   
-  it 'should return the top 5 consonents' do
+  it 'should return the top 5 consonants' do
     source.words = %w{lorem ipsum ipsum}
-    source.top_5_consonents.should == ["m","s","p","r","l"]    
+    source.top_5_consonants.should == ["m","s","p","r","l"]    
   end
   
   it 'should fire a callback when the word "semper" is seen' do
@@ -76,22 +76,18 @@ describe LorumIpsumWordSource do
     source.found_words.should include("semper")
   end
   
-  it 'should fire a callback when the word "semper" and "Lorem" is seen' do
+  it 'should fire a callback when the words "semper" and "Lorem" are seen' do
     source.on_found("semper")
     source.on_found("Lorem")
-    source.words.each do
-      source.next_word!
-    end
+    source.run
     source.found_words.should include("semper")
     source.found_words.should include("Lorem")
   end
   
-  it 'should not add the word ipsum to the found_words list' do
+  it 'should not add the word "ipsum" to the found_words list' do
     source.on_found("semper")
     source.on_found("Lorem")
-    source.words.each do
-      source.next_word!
-    end
+    source.run
     source.found_words.should_not include("ipsum")
   end
 

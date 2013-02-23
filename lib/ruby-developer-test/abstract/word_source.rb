@@ -1,25 +1,54 @@
 class WordSource
+  
+  attr_accessor :words
+  
+  def initialize
+    @current = 0
+    @callbacks = []
+    @vowels = %w{a e i o u}
+  end
+  
+  # Step through all words
   def run
-    raise NotImplementedError, "You should implement this method"
+    words.each { next_word! }
   end
   
+  # Get the next word from the array, run callbacks and step to the next one.
   def next_word!
-    raise NotImplementedError, "You should implement this method"
+    word = words[@current]
+    callback(word)
+    @current += 1 
+    word
   end
 
+  # Return the top 5 consonents
   def top_5_consonants
-    raise NotImplementedError, "You should implement this method"
+    consonants.top(5)
   end
   
+  # Return the top 5 words
   def top_5_words
-    raise NotImplementedError, "You should implement this method"
+    words.top(5)
   end
 
-  def count 
-    raise NotImplementedError, "You should implement this method"
+  # Count the number of words in the source file
+  def count
+    words.count
+  end
+  
+  # Basic callback pattern
+  def callback(*args, &block)
+    if block
+      @callbacks << block
+    elsif @callbacks
+      @callbacks.each do |callback|
+        callback.call(*args)
+      end
+    end
   end
 
-  def callback
-    raise NotImplementedError, "You should implement this method"
+  def consonants
+    words.join("").split("").delete_if{|letter| @vowels.include?(letter)} 
   end
+  
 end
