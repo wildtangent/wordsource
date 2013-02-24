@@ -1,3 +1,10 @@
+# LorumIpsumWordSource class  
+# Implement WordSource class, adding file loading capabilities and adding custom callback for _on_found_
+# Example usage:
+#  src = LorumIpsumWordSource.new
+#  src.on_found("semper")
+#  src.run
+#  src.found_words == ['semper','semper','semper']...
 class LorumIpsumWordSource < WordSource
   
   # Accessor returing all words which were found during the :on_found callback
@@ -8,7 +15,6 @@ class LorumIpsumWordSource < WordSource
     super
     load_words
     @found_words = []
-  
   end
   
   # Get the words from the file 

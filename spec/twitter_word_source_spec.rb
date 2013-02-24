@@ -46,7 +46,7 @@ describe TwitterWordSource do
   end
   
   it 'should get words from a Twitter search', :vcr do
-    source.twitter_search("geckoboard").statuses.should_not be_empty
+    source.send(:twitter_search, "geckoboard").statuses.should_not be_empty
   end
   
   it 'should return the top 5 words from a search', :vcr do

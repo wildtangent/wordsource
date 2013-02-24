@@ -1,17 +1,26 @@
-require 'ruby-developer-test/twitter_client'
+# TwitterWordSource class  
+# Implement WordSource class, adding Twitter API capabilities
+# Example usage:
+#  src = TwitterWordSource.new
+#  src.user = "geckoboard"
+#  src.next_word! # => "geckoboard"
+#  src.next_word! # => "dashboard"
+#  src.next_word! # => "awesome"
+class TwitterWordSource < WordSource 
+   
+  require 'ruby-developer-test/twitter_client'
 
-class TwitterWordSource < WordSource  
-
-  attr_accessor :user, :term
+  # Set the user and search term
+  attr_reader :user, :term
   
+  # Initialize class, and set default strategy to :user
   def initialize
     super
     @strategy = :user
   end
   
-  # Initialize the class with a file and attribute for saving found words
+  # Set the Twitter lookup strategy to :search or :user
   def strategy=(strategy)
-    @strategy = :search
     case strategy
     when :user, :search
       @strategy = strategy
@@ -32,11 +41,6 @@ class TwitterWordSource < WordSource
     load_words
   end
   
-  # Return a search result from Twitter
-  def twitter_search(term)
-    TwitterClient.new.search(term)
-  end
-  
   private
   
   # Get the words from the file 
@@ -47,6 +51,11 @@ class TwitterWordSource < WordSource
     when :search
       @words = twitter_search(@term).statuses.map(&:text).join(" ").split(/\s/)
     end
+  end
+  
+  # Return a search result from Twitter
+  def twitter_search(term)
+    TwitterClient.new.search(term)
   end
   
   # Return a specified user from Twitter

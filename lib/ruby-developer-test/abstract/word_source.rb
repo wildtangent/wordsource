@@ -1,15 +1,27 @@
+# WordSource class
+# Provide basic abilities for iterating over array items and triggering callbacks  
+# Example usage:
+#  src = WordSource.new
+#  src.words = ['foo','bar','baz','bang']
+#  src.words.count = 4
+#  src.top_5_consonants # => ['b', 'z', 'n', 'r', 'g']
+#  src.next_word! # => 'foo'
+#  src.next_word! # => 'bar'
 class WordSource
   
   extend Callbacks
   
   callback :callback
   
+  # The words that have been extracted from the given string
   attr_accessor :words
   
+  @@vowels =  %w{a e i o u}
+  @@consonants =  %w{b c d f g h j k l m n p q r s t v w x y z}
+  
+  # Initialize with current index
   def initialize
     @current = 0
-    @vowels = %w{a e i o u}
-    @consonants = %w{b c d f g h j k l m n p q r s t v w x y z}
   end
   
   # Step through all words
@@ -41,9 +53,10 @@ class WordSource
     words.count
   end
 
+  # Find all the consonants in all the words
   def consonants_in_words
     words.join("").split("").select do |letter| 
-      @consonants.include?(letter)
+      @@consonants.include?(letter)
     end 
   end
   

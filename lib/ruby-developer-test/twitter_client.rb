@@ -1,8 +1,19 @@
+# Wrap the Twitter Gem to allow implementation of basic functionality and error handling  
+# == Setup:  
+# * Add your API credentials to the config/twitter.yml
+#
+# == Usage:  
+#  client = TwitterClient.new
+#  client.user("wildtangent") # => Twitter::User object (see Twitter gem documentation)  
+#  client.search("interesting") # => Twitter::Search object (see Twitter gem documentation)  
 class TwitterClient
   
-  class NoUserException < Exception;end;
-  class NoSearchTermException < Exception;end;
-  class ReachedMaximumRetriesException < Exception;end;
+  class NoUserException < Exception #:nodoc:
+  end
+  class NoSearchTermException < Exception #:nodoc:
+  end
+  class ReachedMaximumRetriesException < Exception #:nodoc:
+  end
   
   require 'twitter'
   require 'yaml'
@@ -31,6 +42,7 @@ class TwitterClient
     @errors ||= []
   end
   
+  # Clear all errors from the errors Array
   def clear_errors!
     @errors = []
   end
