@@ -24,6 +24,7 @@ class WordSource
     @current += 1 
     word
   end
+  alias_method :next_word, :next_word!
 
   # Return the top 5 consonents
   def top_5_consonants
