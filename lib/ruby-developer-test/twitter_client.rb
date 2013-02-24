@@ -1,7 +1,5 @@
 class TwitterClient
   
-  extend Callbacks
-  
   class NoUserException < Exception;end;
   class NoSearchTermException < Exception;end;
   class ReachedMaximumRetriesException < Exception;end;
