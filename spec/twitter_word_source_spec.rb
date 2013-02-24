@@ -26,6 +26,10 @@ describe TwitterWordSource do
     expect { source.top_5_words }.to raise_error
   end
   
+  it 'should raise an exception if we try to get words when there is no search term specified' do
+    expect { source.top_5_consonants }.to raise_error
+  end
+  
   it 'should set the user', :vcr do
     source_wildtangent.user.should == "wildtangent"
   end

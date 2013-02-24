@@ -8,6 +8,7 @@ class LorumIpsumWordSource < WordSource
     super
     load_words
     @found_words = []
+  
   end
   
   # Get the words from the file 
@@ -17,7 +18,7 @@ class LorumIpsumWordSource < WordSource
     end
   end
 
-  # Wrapper for callback for on_found event
+  # # Wrapper for callback for on_found event
   def on_found(word)
     callback(word) do |current_word|
       if word == current_word

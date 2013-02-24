@@ -1,6 +1,8 @@
 class WordSource
   
-  include ::Callback
+  extend Callbacks
+  
+  callback :callback
   
   attr_accessor :words
   
