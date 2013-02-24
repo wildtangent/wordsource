@@ -10,6 +10,10 @@ describe TwitterClient do
     "wildtangent"
   end
 
+  let :term do
+    "geckoboard"
+  end
+
   let :status do
     "Picture cannot hope to do justice to the skills this man has on the joanna! http://t.co/6cB0y53s"
   end
@@ -25,6 +29,12 @@ describe TwitterClient do
   
   it 'should have some valid Twitter config' do
     twitter_client.send(:client_config).keys.should include(:consumer_key, :consumer_secret, :oauth_token, :oauth_token_secret)
+  end
+  
+  it 'should clear existing errors' do
+    twitter_client.errors << "Sorry, but something went wrong"
+    twitter_client.clear_errors!
+    twitter_client.errors.should == []
   end
   
   it 'should load the specified users feed', :vcr do
@@ -51,13 +61,13 @@ describe TwitterClient do
   end
   
   it 'should try to reconnect if the Twitter client is rate limited while calling search', :vcr do
-    twitter_client.send(:client).should_receive(:search).with("geckoboard").exactly(4).times.and_raise(rate_limit_exception)
+    twitter_client.send(:client).should_receive(:search).with(term).exactly(4).times.and_raise(rate_limit_exception)
     expect { 
-      twitter_client.search("geckoboard") 
+      twitter_client.search(term) 
     }.to raise_exception(TwitterClient::ReachedMaximumRetriesException)
   end
 
-  it 'should print an error if the Twittter client fails for a different reason', :vcr do
+  it 'should log an error if the Twittter client fails for a different reason', :vcr do
     twitter_client.send(:client).should_receive(:user).with(user).and_raise(Twitter::Error)
     twitter_client.user(user)
     twitter_client.errors.should == ["Error accessing the Twitter API. Please try later"]
