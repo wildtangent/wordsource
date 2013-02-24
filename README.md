@@ -1,8 +1,8 @@
-== Background
+# Background
 
 A WordSource is a source of words and it keeps analytical information of each word that it has seen.
 
-== Configuration
+# Configuration
 
 Ensure you have a valid Twitter credentials YAML file in config/twitter.yml e.g.
 ```
@@ -18,21 +18,27 @@ Create your Twitter access credentials on the [Twitter Developers Site](https://
 You do NOT need to add your own Twitter credentials for the specs to pass, since they were mocked using my own credentials.   
 However if you want to execute the code directly, then this would be necessary.
      
-== Example
+# Example
 
 For the following string: "lorem ipsum ipsum"
 
 ```
 src = LoremIpsumWordSource.new
-src.next_word # => "lorem"
-src.next_word # => "ipsum"
-src.next_word # => "ipsum"
-src.top_5_words # => ["ipsum","lorem",nil,nil,nil]
-src.top_5_consonants # => ["m","p","s","l","r"]
-src.count # => 3 # total words seen
+src.next_word 
+  # => "lorem"
+src.next_word 
+  # => "ipsum"
+src.next_word 
+  # => "ipsum"
+src.top_5_words 
+  # => ["ipsum","lorem",nil,nil,nil]
+src.top_5_consonants 
+  # => ["m","p","s","l","r"]
+src.count 
+  # => 3 # total words seen
 ```
 
-== Assignment
+# Assignment
 
 1. Implement LoremIpsumWordSource
 2. Get top 5 consonants from the words seen
@@ -40,7 +46,7 @@ src.count # => 3 # total words seen
 4. Add callbacks on specific words e.g. every time "semper" is encountered, call those callbacks registered for "semper"
 5. implement a WordSource that uses the twitter API (instead of loading words from a file)
 
-== Running Specs
+# Running Specs
 
 Run the specs using 
 ```
@@ -50,11 +56,11 @@ rspec .
 The specs will run using VCR cassettes to mock the Twitter requests.  
 Due to the nature of live Twitter API calls, if the cassettes are deleted, some specs may begin to fail, as different results will be returned.
 
-== Viewing Coverage
+# Viewing Coverage
 
 After running specs, coverage can be viewed under coverage/rcov/index.html
 
-== Credits
+# Credits
 
 * [Callbacks example](http://coderrr.wordpress.com/2008/11/22/super-simple-callbacks-in-ruby/)
 * [VCR Gem](https://rubygems.org/gems/vcr)
