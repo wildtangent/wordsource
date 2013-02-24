@@ -44,7 +44,7 @@ src.count
 2. Get top 5 consonants from the words seen
 3. Get top 5 words
 4. Add callbacks on specific words e.g. every time "semper" is encountered, call those callbacks registered for "semper"
-5. implement a WordSource that uses the twitter API (instead of loading words from a file)
+5. implement a WordSource that uses the Twitter API (instead of loading words from a file)
 
 # Running Specs
 
@@ -58,7 +58,7 @@ Due to the nature of live Twitter API calls, if the cassettes are deleted, some 
 
 # Viewing Coverage
 
-After running specs, coverage can be viewed under coverage/rcov/index.html
+After running specs, coverage can be viewed under `coverage/rcov/index.html`
 
 # Credits
 
