@@ -5,14 +5,13 @@ A WordSource is a source of words and it keeps analytical information of each wo
 == Configuration
 
 Ensure you have a valid Twitter credentials YAML file in config/twitter.yml e.g.
-```
-  twitter:
-    consumer_key: MY_CONSUMER_KEY
-    consumer_secret: MY_CONSUMER_SECRET
-    oauth_token: MY_OAUTH_TOKEN
-    oauth_token_secret: MY_OAUTH_TOKEN_SECRET
-```
 
+   twitter:
+     consumer_key: MY_CONSUMER_KEY
+     consumer_secret: MY_CONSUMER_SECRET
+     oauth_token: MY_OAUTH_TOKEN
+     oauth_token_secret: MY_OAUTH_TOKEN_SECRET
+     
 == Example
 
    For the following string: "lorem ipsum ipsum"
