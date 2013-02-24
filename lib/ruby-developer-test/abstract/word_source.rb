@@ -1,10 +1,11 @@
 class WordSource
   
+  include ::Callback
+  
   attr_accessor :words
   
   def initialize
     @current = 0
-    @callbacks = []
     @vowels = %w{a e i o u}
     @consonants = %w{b c d f g h j k l m n p q r s t v w x y z}
   end
@@ -35,17 +36,6 @@ class WordSource
   # Count the number of words in the source file
   def count
     words.count
-  end
-  
-  # Basic callback pattern
-  def callback(*args, &block)
-    if block
-      @callbacks << block
-    elsif @callbacks
-      @callbacks.each do |callback|
-        callback.call(*args)
-      end
-    end
   end
 
   def consonants_in_words

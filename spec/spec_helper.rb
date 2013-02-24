@@ -1,10 +1,11 @@
-require './lib/ruby-developer-test.rb'
 require 'simplecov'
 require 'simplecov-rcov'
-
 SimpleCov.formatter = SimpleCov::Formatter::RcovFormatter
-SimpleCov.start
+SimpleCov.start do
+  add_filter "/spec/"
+end
 
+require './lib/ruby-developer-test.rb'
 require 'vcr'
 VCR.config do |c|
   c.cassette_library_dir     = 'spec/cassettes'
